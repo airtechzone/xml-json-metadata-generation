@@ -119,13 +119,14 @@ def processExtension(ex, xpath):
 
 if __name__ == "__main__":
     debug = False
-    print("Warning: the xsd file has to be named as the root node of the message (e.g. AirShoppingRQ.xsd)", file=stderr)
+    print("Note: the xsd file has to be named as the root node of the message (e.g. AirShoppingRQ.xsd)", file=stderr)
     if len(argv) == 3:
         if argv[2] == "-v":
             debug = True
         else:
             print("Usage: ./metadataGeneration.py <xsd_file> [-v]")
     if len(argv) in [2, 3]:
+        print("Processing", argv[1])
         parser = etree.XMLParser(ns_clean=True, remove_comments=True)
         xsd = etree.parse(argv[1], parser)
         roots = xsd.getroot().getchildren()
